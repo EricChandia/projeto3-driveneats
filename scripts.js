@@ -1,4 +1,6 @@
-
+let precoPrato;
+let precoBebida;
+let precoSobremesa;
 
 function clicarPrato(prato){
     
@@ -11,6 +13,9 @@ function clicarPrato(prato){
     } else{
         prato.classList.add("pratoSelecionado");
     }
+
+    
+
     itensSelecionados();
     
 }
@@ -44,6 +49,8 @@ function clicarSobremesa(sobremesa){
     itensSelecionados();
 }
 
+
+
 function itensSelecionados(){
     prato = document.querySelector(".pratoSelecionado");
     bebida = document.querySelector(".bebidaSelecionada");
@@ -55,17 +62,28 @@ function itensSelecionados(){
     if (prato !== null && sobremesa !== null && bebida !== null){
        botaoItens.classList.add("esconder-botao");      
        botaoFechar.classList.remove("esconder-botao"); 
+
+       precoPrato =  prato.querySelector('.preco-item').querySelector('.preco').innerHTML;
+       precoBebida = bebida.querySelector('.preco-item').querySelector('.preco').innerHTML;
+       precoSobremesa = sobremesa.querySelector('.preco-item').querySelector('.preco').innerHTML;
     }
+
 }
 
 function fecharPedido(){
 
-    
-    let str = "Olá, gostaria de fazer o pedido:- Prato: Frango Yin Yang- Bebida: Coquinha Gelada- Sobremesa: Pudim+Total: R$ 27.70";
-    encodeURIComponent(str);
-    console.log(str);
+    let nome = prompt("Digite seu nome por favor");
+    let endereco = prompt("Agora digite seu endereço");
 
-    window.open(`https://wa.me/5511981955943?text=${str}`, '_blank').focus();
+    let totalPedido = Number(precoPrato) + Number(precoBebida) + Number(precoSobremesa);
+    totalPedido = totalPedido.toFixed(2);
+    //console.log(totalPedido);
+    
+    let str = `Olá, gostaria de fazer o pedido:%0A- Prato: Frango Yin Yang%0A- Bebida: Coquinha Gelada%0A- Sobremesa: Pavê de chocolate%0ATotal: R$ ${totalPedido}%0A%0ANome: ${nome}%0A%Endereço: ${endereco}`;
+    encodeURIComponent(str);
+
+    //window.open(`https://wa.me/5511981955943?text=${str}`, '_blank');
+    window.open(`https://wa.me/5511981955943?text=${str}`, '_self');
     }
 
 

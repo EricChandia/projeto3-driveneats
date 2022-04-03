@@ -72,10 +72,22 @@ h2{
     font-weight: 300;
     font-size: 15px;
     line-height: 18px;
+    margin-bottom: 10px;
 }
 
-.preco-item-texto{
-    margin-top: 10px;
+.item div {
+    display: flex
+}
+
+.item pre{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.preco-item{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
